@@ -1,5 +1,5 @@
 {
-  "name": "magenta",
+  "name": "magenta-testem",
   "version": "1.0.0",
   "description": "A pretty CLI Testem reporter",
   "main": "index.js",
