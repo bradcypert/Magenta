@@ -24,7 +24,7 @@ MagentaReporter.prototype = {
 				duration: 0
 			};
 		}
-		
+
 		this.tests[prefix].total++;
 		if (!Number.isNaN(data.runDuration)) {
 			this.duration += data.runDuration;
@@ -55,13 +55,13 @@ MagentaReporter.prototype = {
 			didPass = 'F'.bold.red;
 			name = name.red;
 		}
-		
+
 		table.push([didPass, name, this.pass, this.fail, this.pending,  this.total, this.duration + 'ms']);
 		return table;
 	},
 
 	finish: function() {
-		var table = new Table({ 
+		var table = new Table({
 				head: ['P/F','Source', 'Pass'.bold.green, 'Fail'.bold.red, 'Pending'.bold.yellow, 'Total'.bold, 'Duration'],
 				colWidths: [5, 35, 10, 10, 10, 10, 10],
 				style: {
@@ -79,15 +79,16 @@ MagentaReporter.prototype = {
 			}
 
 			table.push([
-								pass ? 'P'.bold.green : 'F'.bold.red,
-								name,
-								this.tests[k].pass ? this.tests[k].pass.toString() : '0',
-								this.tests[k].fail ? this.tests[k].fail.toString() : '0',
-								this.tests[k].pending? this.tests[k].pending.toString() : '0',
-								this.tests[k].total ? this.tests[k].total.toString() : '0',
-								this.tests[k].duration + "ms"]);
+									pass ? 'P'.bold.green : 'F'.bold.red,
+									name,
+									this.tests[k].pass ? this.tests[k].pass.toString() : '0',
+									this.tests[k].fail ? this.tests[k].fail.toString() : '0',
+									this.tests[k].pending? this.tests[k].pending.toString() : '0',
+									this.tests[k].total ? this.tests[k].total.toString() : '0',
+									this.tests[k].duration + "ms"
+								]);
 		}
-    table = this._addLastRow(table);	
+    table = this._addLastRow(table);
 		this.out.write(table.toString());
 		this.out.write('\n');
 	}
