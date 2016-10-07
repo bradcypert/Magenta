@@ -12,7 +12,7 @@ npm install magenta-testem --save-dev
 
 In your testem.js (notice the JS)
 ```
-var Magenta = require('magenta');
+var Magenta = require('magenta-testem');
 module.exports = {
     "framework": "mocha",
     "src_files": [
