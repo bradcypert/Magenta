@@ -89,6 +89,7 @@ MagentaReporter.prototype = {
 		}
     table = this._addLastRow(table);	
 		this.out.write(table.toString());
+		this.out.write('\n');
 	}
 };
 
