@@ -69,7 +69,7 @@ MagentaReporter.prototype = {
       }
     });
 
-    for (k of Object.keys(this.tests)) {
+    Object.keys(this.tests).forEach(function(k) {
       var name = k.toString();
       var pass = true;
 
@@ -87,7 +87,8 @@ MagentaReporter.prototype = {
         this.tests[k].total ? this.tests[k].total.toString() : '0',
         this.tests[k].duration + "ms"
       ]);
-    }
+    }.bind(this));
+
     table = this._addLastRow(table);
     this.out.write(table.toString());
     this.out.write('\n');
