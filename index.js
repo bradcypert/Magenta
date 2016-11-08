@@ -26,22 +26,28 @@ MagentaReporter.prototype = {
     }
 
     this.tests[prefix].total++;
-    if (!Number.isNaN(data.runDuration)) {
+
+    //The test has successfully ran.
+    if (!Number.isNaN(data.runDuration) && data.runDuration !== undefined) {
       this.duration += data.runDuration;
       this.tests[prefix].duration += data.runDuration;
-    }
 
-    if (data.passed) {
-      this.pass++;
-      this.tests[prefix].pass++;
-    } else {
-      this.fail++;
-      this.tests[prefix].fail++;
-      this.out.write((data.name + ': failed to pass in ' + prefix + '\n').underline.red);
-      if (data.error) {
-        this.out.write('|  ' + data.error.message + '\n');
-        this.out.write('|  ' + data.error.stack + '\n');
+      if (data.passed) {
+        this.pass++;
+        this.tests[prefix].pass++;
+      } else {
+        this.fail++;
+        this.tests[prefix].fail++;
+        this.out.write((data.name + ': failed to pass in ' + prefix + '\n').underline.red);
+        if (data.error) {
+          this.out.write('|  ' + data.error.message + '\n');
+          this.out.write('|  ' + data.error.stack + '\n');
+        }
       }
+
+    } else {
+      this.pending++;
+      this.tests[prefix].pending++;
     }
   },
 

@@ -22,3 +22,6 @@ module.exports = {
     "reporter": new Magenta()
 };
 ```
+
+####Known things
+Pending tests and skipped tests are reported under the same cateogry. This is due to the way they're reported via testem.
