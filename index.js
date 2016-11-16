@@ -10,7 +10,10 @@ function MagentaReporter(out) {
   this.pending = 0;
   this.duration = 0;
   this.tests = {};
-  loader.start();
+
+  if (global.process.argv.indexOf('ci') !== -1) {
+    loader.start();
+  }
 }
 
 MagentaReporter.prototype = {
