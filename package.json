@@ -1,6 +1,6 @@
 {
   "name": "magenta-testem",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A pretty CLI Testem reporter",
   "main": "index.js",
   "scripts": {
