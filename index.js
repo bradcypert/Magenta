@@ -1,5 +1,17 @@
+var Spinner = require('cli-spinner').Spinner;
 var Table = require('cli-table');
 var Colors = require('colors');
+var spinner = new Spinner();
+
+function startSpinner() {
+  if (global.process.argv.indexOf('ci') !== -1) {
+    spinner.start();
+  }
+}
+
+function stopSpinner() {
+  spinner.stop(true);
+}
 
 function MagentaReporter(out) {
   this.out = out || process.stdout;
@@ -9,6 +21,7 @@ function MagentaReporter(out) {
   this.pending = 0;
   this.duration = 0;
   this.tests = {};
+  startSpinner();
 }
 
 MagentaReporter.prototype = {
@@ -36,6 +49,7 @@ MagentaReporter.prototype = {
         this.pass++;
         this.tests[prefix].pass++;
       } else {
+        stopSpinner();
         this.fail++;
         this.tests[prefix].fail++;
         this.out.write((data.name + ': failed to pass in ' + prefix + '\n').underline.red);
@@ -43,6 +57,7 @@ MagentaReporter.prototype = {
           this.out.write('|  ' + data.error.message + '\n');
           this.out.write('|  ' + data.error.stack + '\n');
         }
+        startSpinner();
       }
 
     } else {
@@ -67,7 +82,11 @@ MagentaReporter.prototype = {
   },
 
   finish: function() {
-    var table = new Table({
+    var table;
+
+    stopSpinner();
+
+    table = new Table({
       head: ['P/F', 'Source', 'Pass'.bold.green, 'Fail'.bold.red, 'Pending'.bold.yellow, 'Total'.bold, 'Duration'],
       colWidths: [5, 35, 10, 10, 10, 10, 10],
       style: {
