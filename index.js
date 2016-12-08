@@ -1,4 +1,3 @@
-var loader = require('cli-loader')({ interval: 100 });
 var Table = require('cli-table');
 var Colors = require('colors');
 
@@ -10,10 +9,6 @@ function MagentaReporter(out) {
   this.pending = 0;
   this.duration = 0;
   this.tests = {};
-
-  if (global.process.argv.indexOf('ci') !== -1) {
-    loader.start();
-  }
 }
 
 MagentaReporter.prototype = {
@@ -79,8 +74,6 @@ MagentaReporter.prototype = {
         head: null
       }
     });
-
-    loader.stop();
 
     Object.keys(this.tests).forEach(function(k) {
       var name = k.toString();
