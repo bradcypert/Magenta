@@ -10,7 +10,7 @@ In your snazzy terminal:
 npm install magenta-testem --save-dev
 ```
 
-In your testem.js (notice the JS)
+In your testem.js
 ```
 var Magenta = require('magenta-testem');
 module.exports = {
