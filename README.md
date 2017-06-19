@@ -4,7 +4,7 @@ A pretty test reporter for Test'em!
 
 ![Screenshot](https://cloud.githubusercontent.com/assets/1455979/19179674/016d3c58-8c15-11e6-9cc9-dfbe368fcd37.png)
 
-####Installation
+#### Installation
 In your snazzy terminal:
 ```
 npm install magenta-testem --save-dev
@@ -23,5 +23,5 @@ module.exports = {
 };
 ```
 
-####Known things
+#### Known things
 Pending tests and skipped tests are reported under the same cateogry. This is due to the way they're reported via testem.
