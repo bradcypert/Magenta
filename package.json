@@ -13,7 +13,7 @@
   "author": "Brad.Cypert@gmail.com",
   "license": "MIT",
   "dependencies": {
-    "chai": "^3.5.0",
+    "chai": "^4.3.3",
     "cli-spinner": "^0.2.5",
     "cli-table": "^0.3.1",
     "colors": "^1.1.2",
